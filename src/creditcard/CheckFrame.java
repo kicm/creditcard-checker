@@ -76,7 +76,7 @@ public class CheckFrame extends JFrame {
 		lblCardType.setBounds(6, 106, 438, 16);
 		contentPane.add(lblCardType);
 		
-		myCard = new CreditCard(null);
+		myCard = new CreditCard();
 		
 		txtCardNumber = new JTextField();
 		txtCardNumber.getDocument().addDocumentListener(new DocumentListener() {
