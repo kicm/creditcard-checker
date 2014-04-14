@@ -16,6 +16,9 @@ public class CreditCard {
 	public CreditCard(String number) {
 		this.number = number;
 	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
 	/**
 	 * 
 	 * @return true if creditcard passes Luhn Algorithm

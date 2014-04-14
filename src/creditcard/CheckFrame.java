@@ -76,12 +76,14 @@ public class CheckFrame extends JFrame {
 		lblCardType.setBounds(6, 106, 438, 16);
 		contentPane.add(lblCardType);
 		
+		myCard = new CreditCard(null);
+		
 		txtCardNumber = new JTextField();
 		txtCardNumber.getDocument().addDocumentListener(new DocumentListener() {
 			
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				myCard = new CreditCard(txtCardNumber.getText());
+				myCard.setNumber(txtCardNumber.getText());
 				
 				lblCardType.setText(myCard.getCardType());
 				lblResult.setText(null);
@@ -89,7 +91,7 @@ public class CheckFrame extends JFrame {
 			
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				myCard = new CreditCard(txtCardNumber.getText());
+				myCard.setNumber(txtCardNumber.getText());
 				
 				lblCardType.setText(myCard.getCardType());
 				lblResult.setText(null);
@@ -97,7 +99,7 @@ public class CheckFrame extends JFrame {
 			
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				myCard = new CreditCard(txtCardNumber.getText());
+				myCard.setNumber(txtCardNumber.getText());
 				
 				lblCardType.setText(myCard.getCardType());
 				lblResult.setText(null);
@@ -107,7 +109,7 @@ public class CheckFrame extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					myCard = new CreditCard(txtCardNumber.getText());
+					myCard.setNumber(txtCardNumber.getText());
 					lblResult.setText(myCard.checkValidity());
 					lblCardType.setText(myCard.getCardType());
 				}
@@ -122,7 +124,7 @@ public class CheckFrame extends JFrame {
 
 		btnCheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				myCard = new CreditCard(txtCardNumber.getText());
+				myCard.setNumber(txtCardNumber.getText());
 				
 				lblResult.setText(myCard.checkValidity());	
 				lblCardType.setText(myCard.getCardType());
