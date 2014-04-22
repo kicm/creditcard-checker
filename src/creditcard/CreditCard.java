@@ -41,6 +41,7 @@ public class CreditCard {
 	public void setNumber(String numberStr) {
 		this.number = numberStr;
 	}
+	
 	/**
 	 * Set the number of the credit card 
 	 * @param numberInt
@@ -49,6 +50,7 @@ public class CreditCard {
 	public void setNumber(int numberInt) {
 		this.number = String.valueOf(numberInt);
 	}
+	
 	/**
 	 * Performs a luhn algorithm check.
 	 * additional information: http://de.wikipedia.org/wiki/Luhn-Algorithmus#Java
@@ -80,6 +82,7 @@ public class CreditCard {
 	/**
 	 * 
 	 * @return The credit card issuer as a String.
+	 *  		"null" if no issuer matches.
 	 */
 	public String getCardType() {
 
@@ -132,6 +135,7 @@ public class CreditCard {
 	}
 	
 	/**
+	 * 
 	 * @return true if card is a VISA
 	 */
 	public boolean isVisa() {
@@ -140,6 +144,7 @@ public class CreditCard {
 	}
 
 	/**
+	 * 
 	 * @return true if card is a Master Card
 	 */
 	public boolean isMasterCard() {
@@ -154,6 +159,7 @@ public class CreditCard {
 	}
 
 	/**
+	 * 
 	 * @return true if card is a Discover Card
 	 */
 	public boolean isDiscover() {
@@ -181,6 +187,7 @@ public class CreditCard {
 	}
 
 	/**
+	 * 
 	 * @return true if card is a Diners Club - Carte Blanche
 	 */
 	public boolean isDinersCarteBlanche() {
@@ -196,6 +203,7 @@ public class CreditCard {
 	}
 
 	/**
+	 * 
 	 * @return true if card is a Diners Club - International
 	 */
 	public boolean isDinersInternational() {
@@ -205,6 +213,7 @@ public class CreditCard {
 
 
 	/**
+	 * 
 	 * @return true if card is an Amex
 	 */
 	public boolean isAmericanExpress() {
@@ -215,6 +224,7 @@ public class CreditCard {
 	}
 
 	/**
+	 * 
 	 * @return true if card is a JCB Card
 	 */
 	public boolean isJCB() {
