@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>CheckCLI.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(106,135,89); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+CheckCLI.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">creditcard</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">CheckCLI { 
+ 
+    </span><span class="s0">public static void </span><span class="s1">main(String[] args) { 
+        Scanner in = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s0">;</span><span class="s1"> 
+        CreditCard card2 = </span><span class="s0">new </span><span class="s1">CreditCard()</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">do </span><span class="s1">{ 
+            System.out.println(</span><span class="s2">&quot;Please enter card number:&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+            card2.setNumber(in.nextLine())</span><span class="s0">;</span><span class="s1"> 
+            System.out.println(</span><span class="s2">&quot;Credit Card Issuer:   &quot; </span><span class="s1">+ card2.getCardType())</span><span class="s0">;</span><span class="s1"> 
+            System.out.println(</span><span class="s2">&quot;Luhn Algorithm Check: &quot; </span><span class="s1">+ card2.checkValidity())</span><span class="s0">;</span><span class="s1"> 
+            System.out.println(</span><span class="s2">&quot;Continue? (y/N)&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        } </span><span class="s0">while </span><span class="s1">(in.nextLine().toUpperCase().equals(</span><span class="s2">&quot;Y&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+ 
+        in.close()</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+} 
+</span></pre>
+</body>
+</html>
