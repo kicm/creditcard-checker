@@ -1,0 +1,276 @@
+<html>
+<head>
+<title>CreditCard.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); }
+.s3 { color: rgb(104,151,187); }
+.s4 { color: rgb(128,128,128); }
+.s5 { color: rgb(106,135,89); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+CreditCard.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">creditcard</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s2">/** 
+ * @author marco 
+ */</span><span class="s1"> 
+</span><span class="s0">public class </span><span class="s1">CreditCard { 
+    </span><span class="s0">private static final int </span><span class="s1">MIN_LENGTH = </span><span class="s3">13</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private static final int </span><span class="s1">MAX_LENGTH = </span><span class="s3">19</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">String number</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s2">/** 
+     * Construct a blank credit card 
+     */</span><span class="s1"> 
+    </span><span class="s0">public </span><span class="s1">CreditCard() { 
+        </span><span class="s0">this</span><span class="s1">.number = </span><span class="s0">null;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Construct a credit card with the given number 
+     * 
+     * @param number the number of the credit card 
+     */</span><span class="s1"> 
+    </span><span class="s0">public </span><span class="s1">CreditCard(String numberStr) { 
+        </span><span class="s0">this</span><span class="s1">.number = number</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Construct a credit card with the given number 
+     * 
+     * @param number The number of the credit card as Integer 
+     */</span><span class="s1"> 
+    </span><span class="s0">public </span><span class="s1">CreditCard(</span><span class="s0">int </span><span class="s1">numberInt) { 
+        </span><span class="s0">this</span><span class="s1">.number = String.valueOf(numberInt)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Set the number of the credit card 
+     * 
+     * @param number The number of the credit card as a string. 
+     */</span><span class="s1"> 
+    </span><span class="s0">public void </span><span class="s1">setNumber(String number) { 
+        </span><span class="s0">this</span><span class="s1">.number = number</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Set the number of the credit card 
+     * 
+     * @param number The number of the credit card as Integer. 
+     */</span><span class="s1"> 
+    </span><span class="s0">public void </span><span class="s1">setNumber(</span><span class="s0">int </span><span class="s1">numberInt) { 
+        </span><span class="s0">this</span><span class="s1">.number = String.valueOf(numberInt)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Performs a luhn algorithm check. 
+     * 
+     * @return true if creditcard passes Luhn Algorithm 
+     */</span><span class="s1"> 
+    </span><span class="s0">public boolean </span><span class="s1">luhnTest() { 
+        </span><span class="s0">int </span><span class="s1">s1 = </span><span class="s3">0</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">int </span><span class="s1">s2 = </span><span class="s3">0</span><span class="s0">;</span><span class="s1"> 
+ 
+        String reverse = </span><span class="s0">new </span><span class="s1">StringBuffer(</span><span class="s0">this</span><span class="s1">.number).reverse().toString()</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s0">; </span><span class="s1">i &lt; reverse.length()</span><span class="s0">; </span><span class="s1">i++) { 
+ 
+            </span><span class="s4">//Use digit to provide '-1' if no numeric value</span><span class="s1"> 
+            </span><span class="s0">int </span><span class="s1">digit = Character.digit(reverse.charAt(i)</span><span class="s0">, </span><span class="s3">10</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+            </span><span class="s4">// gerade digits</span><span class="s1"> 
+            </span><span class="s0">if </span><span class="s1">(i % </span><span class="s3">2 </span><span class="s1">== </span><span class="s3">0</span><span class="s1">) { 
+                s1 += digit</span><span class="s0">;</span><span class="s1"> 
+ 
+            } </span><span class="s0">else </span><span class="s1">{ 
+                </span><span class="s4">// ungerade digits</span><span class="s1"> 
+                s2 += </span><span class="s3">2 </span><span class="s1">* digit</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">if </span><span class="s1">(digit &gt;= </span><span class="s3">5</span><span class="s1">) { 
+                    s2 -= </span><span class="s3">9</span><span class="s0">;</span><span class="s1"> 
+                } 
+            } 
+        } 
+        </span><span class="s0">return </span><span class="s1">(s1 + s2) % </span><span class="s3">10 </span><span class="s1">== </span><span class="s3">0</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+ 
+    </span><span class="s2">/** 
+     * @return The credit card issuer as a String. 
+     */</span><span class="s1"> 
+    </span><span class="s0">public </span><span class="s1">String getCardType() { 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isVisa()) 
+            </span><span class="s0">return </span><span class="s5">&quot;VISA&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isMasterCard()) 
+            </span><span class="s0">return </span><span class="s5">&quot;MasterCard&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isDiscover()) 
+            </span><span class="s0">return </span><span class="s5">&quot;Discover&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isDinersInternational()) 
+            </span><span class="s0">return </span><span class="s5">&quot;Diners Club - International&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isDinersCarteBlanche()) 
+            </span><span class="s0">return </span><span class="s5">&quot;Diners Club - Carte Blanche&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isDinersUSAandCanada()) 
+            </span><span class="s0">return </span><span class="s5">&quot;Diners Club - USA &amp; Canada&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isAmericanExpress()) 
+            </span><span class="s0">return </span><span class="s5">&quot;American Express&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isEnRoute()) 
+            </span><span class="s0">return </span><span class="s5">&quot;en Route&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isJCB()) 
+            </span><span class="s0">return </span><span class="s5">&quot;JCB&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isMaestro()) 
+            </span><span class="s0">return </span><span class="s5">&quot;Maestro&quot;</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">return null;</span><span class="s1"> 
+ 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Checks the validity of the credit card number. 
+     * 
+     * @return the validity of the credit card number. 
+     */</span><span class="s1"> 
+    </span><span class="s0">public </span><span class="s1">String checkValidity() { 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.number.length() &lt; MIN_LENGTH) { 
+            </span><span class="s0">return </span><span class="s5">&quot;Error: not enough digits&quot;</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.number.length() &gt; MAX_LENGTH) { 
+            </span><span class="s0">return </span><span class="s5">&quot;Error: too many digits&quot;</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.luhnTest()) { 
+            </span><span class="s0">return </span><span class="s5">&quot;Test passed&quot;</span><span class="s0">;</span><span class="s1"> 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            </span><span class="s0">return </span><span class="s5">&quot;Test failed&quot;</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isVisa() { 
+        </span><span class="s4">// VISA Check; starts with 4 ; length 13,16 ; eg. 4111 1111 1111 1111</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;4&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isMasterCard() { 
+        </span><span class="s4">// MasterCard Check ; starts with 51,52,53,54,55</span><span class="s1"> 
+        </span><span class="s4">// length 16; eg. 5500 0000 0000 0004</span><span class="s1"> 
+ 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;51&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;52&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;53&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;54&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;55&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isDiscover() { 
+        </span><span class="s4">// Discover Card Check ; starts with 6011 ; length 16 ; eg. 6011 0000</span><span class="s1"> 
+        </span><span class="s4">// 0000 0004</span><span class="s1"> 
+        </span><span class="s4">// 6011, 622126 to 622925, 644, 645, 646, 647, 648, 649, 65</span><span class="s1"> 
+ 
+ 
+        </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;65&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;644&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;645&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;646&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;647&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;648&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;649&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;6011&quot;</span><span class="s1">)) 
+            </span><span class="s0">return true;</span><span class="s1"> 
+ 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">622126</span><span class="s0">; </span><span class="s1">i &lt;= </span><span class="s3">622925</span><span class="s0">; </span><span class="s1">i++) { 
+            </span><span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.number.startsWith(Integer.toString(i))) 
+                </span><span class="s0">return true;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">return false;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isDinersCarteBlanche() { 
+        </span><span class="s4">// Diner’s Club11 ; starts with 30,36,38 ; length 14 ; eg. 3000 0000</span><span class="s1"> 
+        </span><span class="s4">// 0000 04</span><span class="s1"> 
+ 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;300&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;301&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;302&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;303&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;304&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;305&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isDinersInternational() { 
+        </span><span class="s4">//</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;36&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isDinersUSAandCanada() { 
+        </span><span class="s4">//</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;54&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isAmericanExpress() { 
+        </span><span class="s4">// American Express12 34,37 15 3400 0000 0000 009</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;34&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;37&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isEnRoute() { 
+        </span><span class="s4">// en Route 2014,21 15 2014 0000 0000 009</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;21&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;2014&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isJCB() { 
+        </span><span class="s4">// JCB 3088,3096,3112,3158,3337,3528 16 3088 0000 0000 0009</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;3088&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;3096&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;3112&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;3158&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;3337&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;3528&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s2">/** 
+     * Check 
+     * 
+     * @return true if card is a Maestro Card 
+     */</span><span class="s1"> 
+    </span><span class="s0">public boolean </span><span class="s1">isMaestro() { 
+        </span><span class="s4">// Maestro 5018, 5020, 5038, 5893, 6304, 6759, 6761, 6762, 6763 ;</span><span class="s1"> 
+        </span><span class="s4">// length 16-19</span><span class="s1"> 
+        </span><span class="s0">return this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;5018&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;5020&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;5038&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;5893&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;6304&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;6759&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;6761&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;6762&quot;</span><span class="s1">) || 
+                </span><span class="s0">this</span><span class="s1">.number.startsWith(</span><span class="s5">&quot;6763&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+ 
+} 
+</span></pre>
+</body>
+</html>
