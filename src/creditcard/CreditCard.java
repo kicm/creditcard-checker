@@ -111,7 +111,7 @@ public class CreditCard {
 			if (this.isMaestro())
 				return "Maestro";
 			
-			return null;
+			return "Unknown Issuer";
 
 	}
 	/**
