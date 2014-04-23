@@ -1,6 +1,8 @@
 package creditcard;
 
 /**
+ * CreditCard Object
+ * Stores a credit card number, perform luhn algorithm check, return card issuer
  * some numbers to check:
  * http://www.freeformatter.com/credit-card-number-generator-validator.html
  *
@@ -12,13 +14,14 @@ public class CreditCard {
 	private static final int MAX_LENGTH = 19;
 	
 	/**
-	 * Construct a blank credit card
+	 * Default constructor
+	 * Construct a blank credit card (null)
 	 */
 	public CreditCard() {
 		this.number = null;
 	}
 	/**
-	 * Construct a credit card with the given number
+	 * Constructs a credit card with the given card number
 	 * @param numberStr the number of the credit card
 	 */
 	public CreditCard(String numberStr) {
@@ -26,7 +29,7 @@ public class CreditCard {
 	}
 	
 	/**
-	 * Construct a credit card with the given number
+	 * Constructs a credit card with the given card number
 	 * @param numberInt
 	 * 			The number of the credit card as Integer
 	 */
@@ -53,6 +56,14 @@ public class CreditCard {
 	}
 	
 	/**
+	 * Get the number of the credit card 
+	 * @return The number of the credit card as String.
+	 */
+	public String getNumber() {
+		return this.number;
+	}
+	
+	/**
 	 * Performs a luhn algorithm check.
 	 * additional information: http://de.wikipedia.org/wiki/Luhn-Algorithmus#Java
 	 * 
@@ -61,18 +72,23 @@ public class CreditCard {
 	public boolean luhnTest() {
 		int sum = 0;
 		int length = this.number.length();
+		
 		for(int i = 0; i < length; i++){
 			
 			// get digits in reverse order
-			// use digit to provide '-1' if no numeric value
+			// use Character.digit to provide '-1' if no numeric value
 			int digit = Character.digit(this.number.charAt(length - i - 1), 10);
 			
 			// every 2nd number multiply with 2
 			if (i % 2 == 1) {
-	            digit *= 2;
+	            digit = digit * 2;
 	        }
 			
-			sum += digit > 9 ? digit - 9 : digit;
+			if (digit > 9) {
+				sum = sum + digit - 9;
+			} else{
+				sum = sum + digit;
+			}
 			
 		}
 
@@ -81,9 +97,9 @@ public class CreditCard {
 	
 	
 	/**
-	 * 
+	 * Checks if the number matches a known card issuer.
 	 * @return The credit card issuer as a String.
-	 *  		"null" if no issuer matches.
+	 *  		"Unknown Issuer" if no issuer prefix matches.
 	 */
 	public String getCardType() {
 
@@ -136,7 +152,7 @@ public class CreditCard {
 	}
 	
 	/**
-	 * 
+	 * Check whether card number matches the VISA prefix or not.
 	 * @return true if card is a VISA
 	 */
 	public boolean isVisa() {
@@ -145,7 +161,7 @@ public class CreditCard {
 	}
 
 	/**
-	 * 
+	 * Check whether card number matches the Master Card prefix or not.
 	 * @return true if card is a Master Card
 	 */
 	public boolean isMasterCard() {
@@ -160,7 +176,7 @@ public class CreditCard {
 	}
 
 	/**
-	 * 
+	 * Check whether card number matches the Discover Card prefix or not.
 	 * @return true if card is a Discover Card
 	 */
 	public boolean isDiscover() {
@@ -188,7 +204,7 @@ public class CreditCard {
 	}
 
 	/**
-	 * 
+	 * Check whether card number matches the Diners Club - Carte Blanche prefix or not.
 	 * @return true if card is a Diners Club - Carte Blanche
 	 */
 	public boolean isDinersCarteBlanche() {
@@ -204,7 +220,7 @@ public class CreditCard {
 	}
 
 	/**
-	 * 
+	 * Check whether card number matches the Diners Club - International prefix or not.
 	 * @return true if card is a Diners Club - International
 	 */
 	public boolean isDinersInternational() {
@@ -214,8 +230,8 @@ public class CreditCard {
 
 
 	/**
-	 * 
-	 * @return true if card is an Amex
+	 * Check whether card number matches the AmEx prefix or not.
+	 * @return true if card is an AmEx
 	 */
 	public boolean isAmericanExpress() {
 		// American Express12 34,37 15 3400 0000 0000 009
@@ -225,7 +241,7 @@ public class CreditCard {
 	}
 
 	/**
-	 * 
+	 * Check whether card number matches the JCB prefix or not.
 	 * @return true if card is a JCB Card
 	 */
 	public boolean isJCB() {
@@ -239,7 +255,7 @@ public class CreditCard {
 	}
 
 	/**
-	 * Check 
+	 * Check whether card number matches the Maestro Card prefix or not.
 	 * @return true if card is a Maestro Card
 	 */
 	public boolean isMaestro() {
