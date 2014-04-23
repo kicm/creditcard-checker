@@ -6,7 +6,7 @@ package creditcard;
  * some numbers to check:
  * http://www.freeformatter.com/credit-card-number-generator-validator.html
  *
- * @author marco
+ * @author marco, marco, manuel
  */
 public class CreditCard {
 	private String number;
